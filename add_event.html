@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Add Event</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="event_name" class="form-label">Event Name</label>
+            <input type="text" class="form-control" name="event_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="event_date" class="form-label">Event Date</label>
+            <input type="date" class="form-control" name="event_date" required>
+        </div>
+        <div class="mb-3">
+            <label for="event_time" class="form-label">Event Time</label>
+            <input type="time" class="form-control" name="event_time" required>
+        </div>
+        <div class="mb-3">
+            <label for="venue_id" class="form-label">Venue</label>
+            <select class="form-select" name="venue_id" required>
+                <option value="">Select Venue</option>
+                {% for venue in venues %}
+                    <option value="{{ venue.VenueID }}">{{ venue.VenueName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description (optional)</label>
+            <textarea class="form-control" name="description" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Add Event</button>
+    </form>
+</div>
+{% endblock %}

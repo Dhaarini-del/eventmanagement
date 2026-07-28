@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Multi-Sponsor Events</h2>
+{% if events %}
+<table class="table table-striped">
+  <tr><th>Event</th><th>Sponsor Count</th></tr>
+  {% for event in events %}
+    <tr>
+      <td>{{ event.EventName }}</td>
+      <td>{{ event.SponsorCount }}</td>
+    </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>No multi-sponsor events found.</p>
+{% endif %}
+{% endblock %}

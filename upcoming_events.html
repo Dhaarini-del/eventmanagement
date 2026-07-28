@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Upcoming Events</h2>
+<table class="table table-striped">
+  <tr>
+    <th>Event</th>
+    <th>Date</th>
+    <th>Venue</th>
+    <th>Address</th>
+    <th>Capacity</th>
+  </tr>
+  {% for e in events %}
+  <tr>
+    <td>{{ e.EventName }}</td>
+    <td>{{ e.EventDate }}</td>
+    <td>{{ e.VenueName or 'No Venue' }}</td>
+    <td>{{ e.Address or 'N/A' }}</td>
+    <td>{{ e.Capacity or 'N/A' }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+

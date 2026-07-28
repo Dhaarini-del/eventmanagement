@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Add Sponsor</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Sponsor Name</label>
+            <input type="text" class="form-control" name="sponsor_name" required>
+        </div>
+        <button type="submit" class="btn btn-info">Add Sponsor</button>
+    </form>
+</div>
+{% endblock %}

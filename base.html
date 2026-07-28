@@ -1,0 +1,194 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Management System - Letz Connect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .logo-bar {
+            width: 100%;
+            height: 70px;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1001;
+        }
+
+        .logo-bar img {
+            height: 45px;
+            margin-right: 15px;
+        }
+
+        .logo-bar h1 {
+            color: #00ffe1;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            height: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .topbar {
+            height: 60px;
+            background-color: #fff;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            margin-bottom: 15px;
+        }
+
+        .topbar .left a,
+        .topbar .right a {
+            margin-right: 15px;
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .topbar .right span {
+            margin-right: 10px;
+        }
+
+        .topbar a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔝 Top Logo Bar -->
+    <div class="logo-bar">
+        <img src="{{ url_for('static', filename='eventpulse_logo.png') }}" alt="EventPulse Logo">
+        <h1>EventPulse - Letz Connect</h1>
+    </div>
+
+    <!-- 📦 Main Layout Container -->
+    <div class="main-container">
+
+        <!-- 📌 Sidebar -->
+        <div class="sidebar">
+            <a href="/">🏠 Home</a>
+            <a href="/add_event">➕ Add Event</a>
+            <a href="/venues">📍 Venues</a>
+            <a href="/book_ticket">🎟️ Book Ticket</a>
+            <a href="/feedback">💬 Feedback</a>
+            <hr>
+            <a href="/all-attendees">👥 All Attendees</a>
+            <a href="/upcoming-events">📅 Upcoming Events</a>
+            <a href="/vip-tickets">⭐ VIP Tickets</a>
+            <a href="/event-venue">🏛️ Event-Venue Map</a>
+            <a href="/event-speakers">🎤 Event Speakers</a>
+            <a href="/ticket-details">🧾 Ticket Details</a>
+            <a href="/event-revenue">💰 Event Revenue</a>
+            <a href="/attendees-per-event">📊 Attendees/Event</a>
+            <a href="/multi-sponsor-events">🤝 Multi-Sponsor Events</a>
+            <a href="/event-speaker-bio">📖 Speaker Bio</a>
+            <a href="/event-sponsors">🏷️ Event Sponsors</a>
+            <a href="/vip-attendees">🏆 VIP Attendees</a>
+        </div>
+
+        <!-- 📄 Scrollable Main Content -->
+        <div class="main-content">
+
+            <!-- 🔝 Top Menu Bar -->
+            <div class="topbar">
+                <div class="left">
+                    <a href="/">Dashboard</a>
+                    <a href="/add_event">Create</a>
+                    <a href="/book_ticket">Tickets</a>
+                    <a href="/feedback">Feedback</a>
+                </div>
+                <div class="right">
+                    {% if session['username'] %}
+                        <span>👋 {{ session['username'] }}</span>
+                        <a href="/logout" class="btn btn-sm btn-outline-danger">Logout</a>
+                    {% else %}
+                        <a href="/login" class="btn btn-sm btn-primary">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- ✅ Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="container">
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                      {{ message }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <!-- ⬇ Dynamic Page Content -->
+            <div style="margin-top: 20px;">
+                {% block content %}{% endblock %}
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <span>© 2024 Event Management System  All Rights Reserved</span>
+        <span>Powered by <a href="mailto:dhaarini.vigneswaran@gmail.com">Dhaarini Vigneswaran</a></span>
+        <span class="footer-socials">
+          <a href="https://www.instagram.com/dhaarzdarlz/" target="_blank" class="footer-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/dhaarini-vigneswaran-328163292" target="_blank" class="footer-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:dhaarini.vigneswaran@gmail.com" class="footer-icon" title="Email"><i class="fas fa-envelope"></i></a>
+        </span>
+      </div>
+    </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>High Capacity Venues</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Events in High Capacity Venues</h1>
+    <ul>
+        {% for row in data %}
+            <li>{{ row.VenueName }} (Capacity: {{ row.Capacity }}) - Event: {{ row.EventName }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

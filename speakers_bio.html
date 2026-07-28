@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Speaker Bios</h2>
+<table class="table table-striped">
+  <tr><th>Event</th><th>Speaker</th><th>Bio</th></tr>
+  {% if bios and bios|length > 0 %}
+    {% for b in bios %}
+      <tr>
+        <td>{{ b.EventName }}</td>
+        <td>{{ b.SpeakerName }}</td>
+        <td>{{ b.Bio }}</td>
+      </tr>
+    {% endfor %}
+  {% else %}
+    <tr>
+      <td colspan="3" style="text-align:center;">
+        No speaker bios found. <a href="/add_speaker">Add a speaker</a>
+      </td>
+    </tr>
+  {% endif %}
+</table>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ event.EventName }}</h2>
+<p><strong>Date:</strong> {{ event.EventDate }}</p>
+<p><strong>Time:</strong> {{ event.EventTime }}</p>
+<p><strong>Venue:</strong> {{ event.VenueName }}</p>
+
+<h3>Speakers</h3>
+<ul>
+    {% for speaker in speakers %}
+    <li>{{ speaker.SpeakerName }}</li>
+    {% endfor %}
+</ul>
+<a href="/add_speaker/{{ event.EventID }}"><button>Add Speaker</button></a>
+
+<h3>Sponsors</h3>
+<ul>
+    {% for sponsor in sponsors %}
+    <li>{{ sponsor.SponsorName }}</li>
+    {% endfor %}
+</ul>
+<a href="/add_sponsor/{{ event.EventID }}"><button>Add Sponsor</button></a>
+
+<h3>Attendees</h3>
+<ul>
+    {% for attendee in attendees %}
+    <li>{{ attendee.AttendeeName }} - {{ attendee.TicketType }} (₹{{ attendee.Price }})</li>
+    {% endfor %}
+</ul>
+<a href="/add_attendee/{{ event.EventID }}"><button>Add Attendee</button></a>
+{% endblock %}

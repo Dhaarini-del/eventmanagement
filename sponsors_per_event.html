@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Sponsors per Event</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Sponsors per Event</h1>
+    <ul>
+        {% for item in data %}
+            <li>{{ item.EventName }}: {{ item.SponsorName }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

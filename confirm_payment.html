@@ -1,0 +1,15 @@
+<!-- templates/confirm_payment.html -->
+<h2>Confirm Payment</h2>
+<form action="/payment_success" method="POST">
+    <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="RAZORPAY_KEY_ID"
+        data-amount="{{ order.amount }}"
+        data-currency="INR"
+        data-order_id="{{ order.id }}"
+        data-buttontext="Pay with Razorpay"
+        data-name="EventPulse"
+        data-description="Ticket Booking"
+        data-theme.color="#3399cc">
+    </script>
+</form>

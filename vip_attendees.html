@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>VIP Attendees</h2>
+{% if vip_attendees %}
+<table class="table table-striped">
+  <tr><th>Name</th><th>Email</th><th>Price</th></tr>
+  {% for vip in vip_attendees %}
+    <tr>
+      <td>{{ vip.AttendeeName }}</td>
+      <td>{{ vip.Email }}</td>
+      <td>{{ vip.Price }}</td>
+    </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>No VIP attendees found.</p>
+{% endif %}
+{% endblock %}

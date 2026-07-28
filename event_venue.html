@@ -1,0 +1,23 @@
+<!-- templates/event_venue.html -->
+{% extends "base.html" %}
+
+{% block title %}Event-Venue Mapping{% endblock %}
+
+{% block content %}
+<h2>Event - Venue Map</h2>
+{% if event_venues %}
+<table class="table table-striped">
+  <tr><th>Event</th><th>Venue</th><th>Address</th><th>Capacity</th></tr>
+  {% for ev in event_venues %}
+    <tr>
+      <td>{{ ev.EventName }}</td>
+      <td>{{ ev.VenueName or 'No Venue' }}</td>
+      <td>{{ ev.Address or 'N/A' }}</td>
+      <td>{{ ev.Capacity or 'N/A' }}</td>
+    </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>No event-venue data found.</p>
+{% endif %}
+{% endblock %}

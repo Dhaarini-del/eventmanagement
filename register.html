@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center">Register</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Confirm Password</label>
+            <input type="password" name="confirm" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Role</label>
+            <select name="role" class="form-control" id="role-select" onchange="toggleAdminCode()">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+        <div class="mb-3" id="admin-code-div" style="display:none;">
+            <label>Admin Registration Code</label>
+            <input type="password" name="admin_code" class="form-control">
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success">Register</button>
+            <a href="/login" class="btn btn-link">Already have an account? Login</a>
+        </div>
+    </form>
+</div>
+<script>
+function toggleAdminCode() {
+    var role = document.getElementById('role-select').value;
+    document.getElementById('admin-code-div').style.display = (role === 'admin') ? 'block' : 'none';
+}
+// Ensure correct state on page load
+window.onload = function() { toggleAdminCode(); };
+</script>
+{% endblock %}

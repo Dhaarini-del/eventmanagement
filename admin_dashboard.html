@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-primary">Welcome, Admin {{ session.username }} 👑</h2>
+    <p>Use the sidebar or dashboard navigation to manage events, view revenue, users, and more.</p>
+    <a href="/" class="btn btn-secondary mt-3">Go to User Dashboard</a>
+</div>
+{% endblock %}

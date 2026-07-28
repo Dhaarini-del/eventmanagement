@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>All Attendees</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Attendee ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Event</th>
+                <th>Ticket Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendee in attendees %}
+            <tr>
+                <td>{{ attendee.AttendeeID }}</td>
+                <td>{{ attendee.AttendeeName }}</td>
+                <td>{{ attendee.Email }}</td>
+                <td>{{ attendee.EventName }}</td>
+                <td>{{ attendee.TicketType }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

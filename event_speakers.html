@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Event Speakers</h2>
+<table class="table table-striped">
+  <tr><th>Speaker</th><th>Event</th></tr>
+  {% for s in speakers %}
+  <tr><td>{{ s.SpeakerName }}</td><td>{{ s.EventName }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

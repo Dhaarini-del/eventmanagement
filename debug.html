@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Database Debug Information</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Connection Status</h5>
+        <p><strong>Database Connected:</strong> {{ debug_info.database_connected }}</p>
+        <p><strong>Cursor Available:</strong> {{ debug_info.cursor_available }}</p>
+        
+        {% if debug_info.error %}
+        <div class="alert alert-danger">
+            <strong>Error:</strong> {{ debug_info.error }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if debug_info.tables %}
+<div class="card mt-3">
+    <div class="card-body">
+        <h5 class="card-title">Database Tables</h5>
+        <ul class="list-group">
+            {% for table in debug_info.tables %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ table }}
+                <span class="badge bg-primary rounded-pill">{{ debug_info.sample_data[table] }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<div class="mt-3">
+    <a href="/" class="btn btn-primary">Back to Home</a>
+</div>
+{% endblock %} 

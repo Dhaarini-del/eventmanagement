@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Add Attendee</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ticket Type</label>
+            <select class="form-select" name="ticket_type">
+                <option value="General">General</option>
+                <option value="VIP">VIP</option>
+                <option value="Premium">Premium</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Price</label>
+            <input type="number" class="form-control" name="price" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add Attendee</button>
+    </form>
+</div>
+{% endblock %}

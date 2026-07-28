@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🎫 Book Ticket</h2>
+
+<form method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" name="name" id="name" placeholder="Your Name" required class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" name="email" id="email" placeholder="Your Email" required class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label for="event_id" class="form-label">Select Event</label>
+    <select name="event_id" id="event_id" class="form-select" required>
+      {% for event in events %}
+      <option value="{{ event.EventID }}">{{ event.EventName }} ({{ event.EventDate }})</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="ticket_type" class="form-label">Ticket Type</label>
+    <select name="ticket_type" id="ticket_type" class="form-select" required>
+      <option value="Regular">Regular - ₹500</option>
+      <option value="VIP">VIP - ₹1000</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="payment_method" class="form-label">Payment Method</label>
+    <select name="payment_method" id="payment_method" class="form-select" required>
+      <option value="PhonePe Number">PhonePe Number: 9141129841</option>
+      <option value="QR Code">Scan QR Code</option>
+      <option value="Bank Transfer">Account: 00000040988526554 | IFSC: SBIN0011819</option>
+    </select>
+  </div>
+<div class="mb-3">
+  <label class="form-label">UPI QR Code</label><br>
+  <img src="{{ url_for('static', filename='qr/my_qr.png') }}" alt="QR Code" class="img-thumbnail" style="max-width: 200px;">
+</div>
+
+  <div class="mb-3">
+    <label for="payment_proof" class="form-label">Upload Payment Proof (jpg/png/pdf)</label>
+    <input type="file" name="payment_proof" id="payment_proof" accept=".jpg,.jpeg,.png,.pdf" required class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Book & Submit Payment</button>
+</form>
+{% endblock %}

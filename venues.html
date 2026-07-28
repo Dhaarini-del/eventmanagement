@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Venues</h2>
+<a href="/add_venue" class="btn btn-primary mb-3">Add New Venue</a>
+<table class="table table-striped">
+  <tr><th>Name</th><th>Address</th><th>Capacity</th></tr>
+  {% for v in venues %}
+  <tr>
+    <td>{{ v.VenueName }}</td>
+    <td>{{ v.Address }}</td>
+    <td>{{ v.Capacity }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

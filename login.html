@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+    <h2 class="text-center">Login</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="/register" class="btn btn-link">New user? Register</a>
+            <a href="/reset_password" class="btn btn-link">Forgot Password?</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

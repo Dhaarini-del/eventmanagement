@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Event–Venue Mapping</h2>
+<table class="table table-striped">
+  <tr><th>Event</th><th>Venue</th></tr>
+  {% for m in mappings %}
+  <tr><td>{{ m.EventName }}</td><td>{{ m.VenueName }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

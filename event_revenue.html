@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Event Revenue</h2>
+<table class="table table-striped">
+  <tr><th>Event</th><th>Total Revenue</th></tr>
+  {% for r in revenues %}
+    <tr><td>{{ r.EventName }}</td><td>{{ r.TotalRevenue }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

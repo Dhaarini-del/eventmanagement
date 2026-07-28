@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Attendees per Event</h2>
+{% if events %}
+<table class="table table-striped">
+  <tr><th>Event</th><th>Attendee Count</th></tr>
+  {% for event in events %}
+    <tr>
+      <td>{{ event.EventName }}</td>
+      <td>{{ event.AttendeeCount }}</td>
+    </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>No attendee data found for events.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Ticket Details</h2>
+<table class="table table-striped">
+  <tr><th>Ticket</th><th>Event</th><th>Attendee</th><th>Type</th><th>Price</th></tr>
+  {% for t in tickets %}
+    <tr>
+      <td>{{ t.TicketID }}</td>
+      <td>{{ t.EventName }}</td>
+      <td>{{ t.AttendeeName }}</td>
+      <td>{{ t.TicketType }}</td>
+      <td>{{ t.Price }}</td>
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}

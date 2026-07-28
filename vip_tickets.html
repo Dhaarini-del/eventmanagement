@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>VIP Tickets</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Attendee</th>
+                <th>Event</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.TicketID }}</td>
+                <td>{{ ticket.AttendeeName }}</td>
+                <td>{{ ticket.EventName }}</td>
+                <td>₹{{ ticket.Price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

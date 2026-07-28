@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">{{ title }}</h2>
+    {% if rows %}
+    <ul class="list-group">
+        {% for row in rows %}
+        <li class="list-group-item">{{ row[col] }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="text-center text-muted">No data available.</p>
+    {% endif %}
+</div>
+{% endblock %}

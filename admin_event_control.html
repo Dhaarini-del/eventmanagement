@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>🛠️ Admin Event Control Panel</h2>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Event ID</th>
+                <th>Event Name</th>
+                <th>Date</th>
+                <th>Venue</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in events %}
+            <tr>
+                <td>{{ e.EventID }}</td>
+                <td>{{ e.EventName }}</td>
+                <td>{{ e.EventDate }}</td>
+                <td>{{ e.VenueName }}</td>
+                <td>
+                    <a href="/event/{{ e.EventID }}" class="btn btn-sm btn-info">View</a>
+                    <a href="/delete_event/{{ e.EventID }}" class="btn btn-sm btn-danger" onclick="return confirm('Delete this event?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
