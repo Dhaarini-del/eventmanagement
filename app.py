@@ -5,7 +5,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from typing import Dict, Any, Optional
 from functools import wraps
+import streamlit as st
+import mysql.connector
 
+st.title("Event Management System")
 # Role-based access decorators
 
 def admin_required(f):
