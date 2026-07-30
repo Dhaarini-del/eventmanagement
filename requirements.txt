@@ -1,5 +1,3 @@
-flask
+streamlit
 mysql-connector-python
 werkzeug
-gunicorn
-streamlit
